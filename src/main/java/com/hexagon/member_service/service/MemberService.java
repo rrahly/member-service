@@ -44,7 +44,7 @@ public class MemberService {
     public ResponseEntity<?> fetchMemberById(String id) {
         Optional<Member> member = memberRepository.findById(id);
         if (member.isPresent()) {
-            Project project = restTemplate.getForObject("http://localhost:8081/project/" + member.get().getProjectName(), Project.class);
+            Project project = restTemplate.getForObject("http://MEMBER-SERVICE/project/" + member.get().getProjectName(), Project.class);
             MemberResponse memberResponse = new MemberResponse(
                     member.get().getId(),
                     member.get().getName(),
